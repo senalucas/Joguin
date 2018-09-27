@@ -1,4 +1,4 @@
-import pygame,sys,os,objetos,movimentacao
+import pygame,sys,os,objetos,char
 
 largura=800
 altura=600
@@ -21,7 +21,7 @@ def jogo():
     grupo.add(p3)
     grupo.add(p4)
     p = objetos.Coisas("Images/Elementos/portao1.png",largura/2,520)
-    j = objetos.Personagem(largura/2,altura/2)
+    j = char.Personagem(largura/2,altura/2)
 
     while True:
         for e in pygame.event.get():
