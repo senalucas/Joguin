@@ -1,4 +1,5 @@
 import pygame,os
+
 pygame.init()
 
 class Personagem(pygame.sprite.Sprite):
