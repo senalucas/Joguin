@@ -15,17 +15,13 @@ def jogo():
     placar = pygame.font.Font(caminhoDaFonte,25)
     mostrarPlacar = placar.render("Pontuação: ",True,branco)
 
-    p1 = objetos.Parede1()
-    p2 = objetos.Parede2()
-    p3 = objetos.Parede3()
-    p4 = objetos.Parede4()
-    p = objetos.Portao()
-    j = objetos.Personagem()
-    muro = pygame.sprite.Group()
-    muro.add(p1)
-    muro.add(p2)
-    muro.add(p3)
-    muro.add(p4)
+    p1 = objetos.Coisas("Images/Elementos/parede1.png",400,80)
+    p2 = objetos.Coisas("Images/Elementos/parede2.png",84,295)
+    p3 = objetos.Coisas("Images/Elementos/parede3.png",399,520)
+    p4 = objetos.Coisas("Images/Elementos/parede4.png",715,294)
+    p = objetos.Coisas("Images/Elementos/portao1.png",largura/2,520)
+    j = objetos.Personagem(largura/2,altura/2)
+    
     jogo = True
 
     while jogo:
