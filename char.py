@@ -12,7 +12,7 @@ class Personagem(pygame.sprite.Sprite):
         self.rect.centerx = self.x
         self.rect.centery = self.y
 
-        self.andando = 1
+        self.andando = 2
 
     def mostrar(self, tela):
         tela.blit(self.Char,self.rect)

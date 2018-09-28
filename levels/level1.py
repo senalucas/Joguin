@@ -1,16 +1,26 @@
-import pygame,os,objetos,char
+import pygame,os,objetos,char,definicoes
 
 pygame.init()
 
-#p1 = objetos.Coisas(ps1,400,80)
-#p2 = objetos.Coisas(ps2,84,295)
-#p3 = objetos.Coisas(ps3,399,520)
-#p4 = objetos.Coisas(ps4,715,294)
+class N1():
+    def __init__(self,largura,altura):
+        self.img = definicoes.Diretorios()
 
-#grupo = pygame.sprite.Group()
-#grupo.add(p1)
-#grupo.add(p2)
-#grupo.add(p3)
-#grupo.add(p4)
-#p = objetos.Coisas(porta1,largura/2,520)
-#j = char.Personagem(largura/2,altura/2)
+        self.p1 = objetos.Coisas(self.img.ps1,400,80)
+        self.p2 = objetos.Coisas(self.img.ps2,84,295)
+        self.p3 = objetos.Coisas(self.img.ps3,399,520)
+        self.p4 = objetos.Coisas(self.img.ps4,715,294)
+
+        self.grupo = pygame.sprite.Group()
+        self.grupo.add(self.p1)
+        self.grupo.add(self.p2)
+        self.grupo.add(self.p3)
+        self.grupo.add(self.p4)
+        self.p = objetos.Coisas(self.img.porta1,largura/2,520)
+
+    def mostrarlvl(self,tela):
+        self.p1.mostrar(tela)
+        self.p2.mostrar(tela)
+        self.p3.mostrar(tela)
+        self.p4.mostrar(tela)
+        self.p.mostrar(tela)
