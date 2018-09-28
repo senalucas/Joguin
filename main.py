@@ -8,10 +8,11 @@ def jogo():
 
     tela = pygame.display.set_mode([largura,altura])
     pygame.display.set_caption("Maçãs Forever 2.0")
-    img = Diretorios()
-    fundo = img.Fundo
+    img = definicoes.Diretorios()
+    fundo = img.fundo
     background = pygame.image.load(fundo)
-
+    j = char.Personagem(largura/2,altura/2)
+    
     while True:
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
@@ -27,16 +28,17 @@ def jogo():
         grupo.add(p2)
         grupo.add(p3)
         grupo.add(p4)
-        p = objetos.Coisas(porta1,largura/2,520)
-        j = char.Personagem(largura/2,altura/2)
+        # p = objetos.Coisas(img.ps1,largura/2,520)
+        
 
         j.movimentacao()
+
         tela.blit(background,(0,0))
         p1.mostrar(tela)
         p2.mostrar(tela)
         p3.mostrar(tela)
         p4.mostrar(tela)
-        p.mostrar(tela)
+        # p.mostrar(tela)
         j.mostrar(tela)
         pygame.display.update()
 
