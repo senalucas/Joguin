@@ -18,6 +18,9 @@ class N1():
         self.grupo.add(self.p4)
         self.p = objetos.Coisas(self.img.porta1,largura/2,520)
 
+    def get_grupo(self):
+        return self.grupo
+
     def mostrarlvl(self,tela):
         self.p1.mostrar(tela)
         self.p2.mostrar(tela)

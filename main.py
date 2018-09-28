@@ -13,14 +13,15 @@ def jogo():
     background = pygame.image.load(fundo)
     j = char.Personagem(largura/2,altura/2)
     nivel1 = levels.level1.N1(largura,altura)
+    grupo = nivel1.get_grupo()
     while True:
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
         tela.blit(background,(0,0))
-
-        j.movimentacao()
+        #print(pygame.sprite.Group.Sprites(grupo))
+        j.movimentacao(j,nivel1.p1,nivel1.p2,nivel1.p3,nivel1.p4)
         nivel1.mostrarlvl(tela)
         j.mostrar(tela)
         pygame.display.update()
