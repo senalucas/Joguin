@@ -12,8 +12,11 @@ def jogo():
     fundo = img.fundo
     background = pygame.image.load(fundo)
     j = char.Personagem(largura/2,altura/2)
+<<<<<<< HEAD
     titulo = objetos.Textos("Maçãs Forever 2.0",25,255,255,255)
     pontuacao = objetos.Textos("Pontuação: ",25,255,255,255)
+=======
+>>>>>>> master
     nivel1 = levels.level1.N1(largura,altura)
     grupo = nivel1.get_grupo()
     while True:
@@ -22,8 +25,12 @@ def jogo():
                 pygame.quit()
                 sys.exit()
         tela.blit(background,(0,0))
+<<<<<<< HEAD
         titulo.mostrarTextoNaTela(tela,((largura/3)),10)
         pontuacao.mostrarTextoNaTela(tela,550,560)
+=======
+        #print(pygame.sprite.Group.Sprites(grupo))
+>>>>>>> master
         j.movimentacao(j,nivel1.p1,nivel1.p2,nivel1.p3,nivel1.p4)
         nivel1.mostrarlvl(tela)
         j.mostrar(tela)
