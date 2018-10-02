@@ -1,4 +1,4 @@
-import pygame,os
+import pygame,os, random
 
 pygame.init()
 
@@ -12,7 +12,7 @@ class Coisas(pygame.sprite.Sprite):
 
     def mostrar(self,tela):
         tela.blit(self.Coisa,self.rect)
-
+    
 class Textos():
     def __init__(self, texto,tam,r,g,b):
         self.caminho = os.path.join("fontes","VCR_OSD_MONO.ttf")
