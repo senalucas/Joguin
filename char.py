@@ -29,41 +29,25 @@ class Personagem(pygame.sprite.Sprite):
         elif(pygame.sprite.collide_rect(j,p4)):
             j.rect = j.rect.move(-(j.andando),0)
         else:
-<<<<<<< HEAD
             if keys[pygame.K_w] or keys[pygame.K_UP]:
-=======
-            if keys[pygame.K_w]:
->>>>>>> master
                 if clock % 2 == 0:
                     self.Char = pygame.image.load("Images/Personagem/bonecodecostas1.png")
                 else:
                     self.Char = pygame.image.load("Images/Personagem/bonecodecostas2.png")
                 self.rect = self.rect.move(0,-(self.andando))
-<<<<<<< HEAD
             if keys[pygame.K_s] or keys[pygame.K_DOWN]:
-=======
-            if keys[pygame.K_s]:
->>>>>>> master
                 if clock % 2 == 0:
                     self.Char = pygame.image.load("Images/Personagem/bonecodefrente1.png")
                 else:
                     self.Char = pygame.image.load("Images/Personagem/bonecodefrente2.png")
                 self.rect = self.rect.move(0,+(self.andando))
-<<<<<<< HEAD
             if keys[pygame.K_a] or keys[pygame.K_LEFT]:
-=======
-            if keys[pygame.K_a]:
->>>>>>> master
                 if clock % 2 == 0:
                     self.Char = pygame.image.load("Images/Personagem/bonecopraesquerda1.png")
                 else:
                     self.Char = pygame.image.load("Images/Personagem/bonecopraesquerda2.png")
                 self.rect = self.rect.move(-(self.andando),0)
-<<<<<<< HEAD
             if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
-=======
-            if keys[pygame.K_d]:
->>>>>>> master
                 if clock % 2 == 0:
                     self.Char = pygame.image.load("Images/Personagem/bonecopradireita1.png")
                 else:
