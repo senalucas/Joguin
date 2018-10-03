@@ -24,7 +24,7 @@ class N1():
                 y = random.randint(100,500)
                 self.maca = objetos.Coisas(self.macav,x,y)
                 self.listaDeMacas.append(self.maca)
-            elif (j <= 3 and count <= 3):                
+            elif (j <= 3 and count <= 3):
                 x = random.randint(135,700)
                 y = random.randint(100,500)
                 self.maca = objetos.Coisas(self.macad,x,y)
