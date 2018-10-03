@@ -15,12 +15,21 @@ class N1():
         self.p4 = objetos.Coisas(self.img.ps4,734,300)
 
         self.listaDeMacas = []
+        count = 1
 
         for i in range(0,10):
-            x = random.randint(135,700)
-            y = random.randint(100,500)
-            self.maca = objetos.Coisas(self.macav,x,y)
-            self.listaDeMacas.append(self.maca)
+            j = random.randint (1, 10)
+            if (j > 3 and j <= 10):
+                x = random.randint(135,700)
+                y = random.randint(100,500)
+                self.maca = objetos.Coisas(self.macav,x,y)
+                self.listaDeMacas.append(self.maca)
+            elif (j <= 3 and count <= 3):                
+                x = random.randint(135,700)
+                y = random.randint(100,500)
+                self.maca = objetos.Coisas(self.macad,x,y)
+                self.listaDeMacas.append(self.maca)
+                count+=1
 
         self.grupo = pygame.sprite.Group()
         self.grupo.add(self.p1)
