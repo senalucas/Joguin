@@ -1,4 +1,4 @@
-import pygame,os,levels.level1
+import pygame,os,levels.level1,objetos
 
 pygame.init()
 
@@ -16,6 +16,7 @@ class Personagem(pygame.sprite.Sprite):
 
     def mostrar(self, tela):
         tela.blit(self.Char,self.rect)
+
 
     def movimentacao(self,j,p1,p2,p3,p4):
         clock = pygame.time.get_ticks()

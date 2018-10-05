@@ -15,7 +15,6 @@ def jogo():
     titulo = objetos.Textos("Maçãs Forever 2.0",25,255,255,255)
     pontuacao = objetos.Textos("Pontuação: ",25,255,255,255)
     nivel1 = levels.level1.N1(largura,altura)
-    grupo = nivel1.get_grupo()
     while True:
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
@@ -26,7 +25,9 @@ def jogo():
         pontuacao.mostrarTextoNaTela(tela,550,560)
         j.movimentacao(j,nivel1.p1,nivel1.p2,nivel1.p3,nivel1.p4)
         nivel1.mostrarlvl(tela)
+        listam = nivel1.get_maca()
         j.mostrar(tela)
+        nivel1.movimaca(j,tela)
         pygame.display.update()
-    
+
 jogo()

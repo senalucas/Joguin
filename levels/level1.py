@@ -19,17 +19,18 @@ class N1():
 
         for i in range(0,10):
             j = random.randint (1, 10)
-            if (j > 3 and j <= 10):
-                x = random.randint(135,700)
-                y = random.randint(100,500)
-                self.maca = objetos.Coisas(self.macav,x,y)
-                self.listaDeMacas.append(self.maca)
-            elif (j <= 3 and count <= 3):
+            if (j <= 3 and count <= 3):
                 x = random.randint(135,700)
                 y = random.randint(100,500)
                 self.maca = objetos.Coisas(self.macad,x,y)
                 self.listaDeMacas.append(self.maca)
                 count+=1
+            else:
+                x = random.randint(135,700)
+                y = random.randint(100,500)
+                self.maca = objetos.Coisas(self.macav,x,y)
+                self.listaDeMacas.append(self.maca)
+
 
         self.grupo = pygame.sprite.Group()
         self.grupo.add(self.p1)
@@ -38,8 +39,20 @@ class N1():
         self.grupo.add(self.p4)
         self.p = objetos.Coisas(self.img.porta1,largura/2,55)
 
-    def get_grupo(self):
-        return self.grupo
+    def get_maca(self):
+        return self.listaDeMacas
+
+    def movimaca(self,j,tela):
+        x = len(self.listaDeMacas)
+        i = 0
+        while i < x:
+            z = self.listaDeMacas[i]
+            z.mostrar(tela)
+            if(pygame.sprite.collide_rect(j,self.listaDeMacas[i])):
+                self.maca = objetos.Coisas(self.macav,770,570)
+                self.listaDeMacas[i] = self.maca
+            #break
+            i+=1
 
     def mostrarlvl(self,tela):
         self.p1.mostrar(tela)
@@ -47,5 +60,3 @@ class N1():
         self.p3.mostrar(tela)
         self.p4.mostrar(tela)
         self.p.mostrar(tela)
-        for i in self.listaDeMacas:
-            i.mostrar(tela)
