@@ -22,13 +22,13 @@ class N1():
             if (j <= 3 and count <= 3):
                 x = random.randint(135,700)
                 y = random.randint(100,500)
-                self.maca = objetos.Coisas(self.macad,x,y)
+                self.maca = objetos.Massan(self.macad,x,y,False,True)
                 self.listaDeMacas.append(self.maca)
                 count+=1
             else:
                 x = random.randint(135,700)
                 y = random.randint(100,500)
-                self.maca = objetos.Coisas(self.macav,x,y)
+                self.maca = objetos.Massan(self.macav,x,y,True,False)
                 self.listaDeMacas.append(self.maca)
 
 
@@ -45,12 +45,19 @@ class N1():
     def movimaca(self,j,tela):
         x = len(self.listaDeMacas)
         i = 0
+        pontuacao = 0
         while i < x:
             z = self.listaDeMacas[i]
             z.mostrar(tela)
             if(pygame.sprite.collide_rect(j,self.listaDeMacas[i])):
-                self.maca = objetos.Coisas(self.macav,770,570)
-                self.listaDeMacas[i] = self.maca
+                if self.listaDeMacas[i].vermelha == True:
+                    self.maca = objetos.Massan(self.macav,770,570,True,False)
+                    self.listaDeMacas[i] = self.maca
+                elif self.listaDeMacas[i].dourada == True:
+                    self.maca = objetos.Massan(self.macad,770,570,True,False)
+                    self.listaDeMacas[i] = self.maca
+                self.listaDeMacas[i].comeu = True
+
             #break
             i+=1
 
