@@ -12,9 +12,9 @@ def jogo():
     fundo = img.fundo
     background = pygame.image.load(fundo)
     j = char.Personagem(largura/2,altura/2)
+    nivel1 = levels.level1.N1(largura,altura)
     titulo = objetos.Textos("Maçãs Forever 2.0",25,255,255,255)
     pontuacao = objetos.Textos("Pontuação: ",25,255,255,255)
-    nivel1 = levels.level1.N1(largura,altura)
     while True:
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
@@ -23,6 +23,10 @@ def jogo():
         tela.blit(background,(0,0))
         titulo.mostrarTextoNaTela(tela,((largura/3)),10)
         pontuacao.mostrarTextoNaTela(tela,550,560)
+
+        pontos = objetos.Textos(str(nivel1.get_pontuacao()),25,255,255,255)
+        pontos.mostrarTextoNaTela(tela,700,560)
+
         j.movimentacao(j,nivel1.p1,nivel1.p2,nivel1.p3,nivel1.p4)
         nivel1.mostrarlvl(tela)
         listam = nivel1.get_maca()

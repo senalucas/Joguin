@@ -8,6 +8,7 @@ class N1():
         self.img = definicoes.Diretorios()
         self.macad = self.img.macad
         self.macav = self.img.macav
+        self.pontuacao = 0
 
         self.p1 = objetos.Coisas(self.img.ps1,400,60)
         self.p2 = objetos.Coisas(self.img.ps2,66,300)
@@ -45,7 +46,7 @@ class N1():
     def movimaca(self,j,tela):
         x = len(self.listaDeMacas)
         i = 0
-        pontuacao = 0
+        self.pontuacao = 0
         while i < x:
             z = self.listaDeMacas[i]
             z.mostrar(tela)
@@ -54,12 +55,19 @@ class N1():
                     self.maca = objetos.Massan(self.macav,770,570,True,False)
                     self.listaDeMacas[i] = self.maca
                 elif self.listaDeMacas[i].dourada == True:
-                    self.maca = objetos.Massan(self.macad,770,570,True,False)
+                    self.maca = objetos.Massan(self.macav,770,570,False,True)
                     self.listaDeMacas[i] = self.maca
                 self.listaDeMacas[i].comeu = True
-
             #break
             i+=1
+        for i in self.listaDeMacas:
+            if i.comeu == True:
+                if i.vermelha == True:
+                    self.pontuacao +=1
+                elif i.dourada == True:
+                    self.pontuacao +=3
+    def get_pontuacao(self):
+        return self.pontuacao
 
     def mostrarlvl(self,tela):
         self.p1.mostrar(tela)
