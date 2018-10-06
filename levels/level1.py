@@ -9,12 +9,10 @@ class N1():
         self.macad = self.img.macad
         self.macav = self.img.macav
         self.pontuacao = 0
-
         self.p1 = objetos.Coisas(self.img.ps1,400,60)
         self.p2 = objetos.Coisas(self.img.ps2,66,300)
         self.p3 = objetos.Coisas(self.img.ps3,400,540)
         self.p4 = objetos.Coisas(self.img.ps4,734,300)
-
         self.listaDeMacas = []
         count = 1
 

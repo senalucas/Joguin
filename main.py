@@ -6,6 +6,7 @@ altura=600
 def jogo():
     pygame.init()
 
+
     tela = pygame.display.set_mode([largura,altura])
     pygame.display.set_caption("Maçãs Forever 2.0")
     img = definicoes.Diretorios()
