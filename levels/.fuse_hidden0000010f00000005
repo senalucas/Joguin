@@ -9,6 +9,7 @@ class N1():
         self.macad = self.img.macad
         self.macav = self.img.macav
         self.pontuacao = 0
+
         self.p1 = objetos.Coisas(self.img.ps1,400,60)
         self.p2 = objetos.Coisas(self.img.ps2,66,300)
         self.p3 = objetos.Coisas(self.img.ps3,400,540)
@@ -52,6 +53,7 @@ class N1():
                     self.maca = objetos.Massan(self.macav,750,570,False,True)
                     self.listaDeMacas[i] = self.maca
                 self.listaDeMacas[i].comeu = True
+            #break
             i+=1
 
         for i in self.listaDeMacas:
@@ -69,11 +71,6 @@ class N1():
 
     def get_pontuacao(self):
         return self.pontuacao
-
-    def ganhou(self):
-        if self.get_pontuacao()>=20:
-            self.p = objetos.Coisas(self.img.porta2,400,55)
-
 
     def mostrarlvl(self,tela):
         self.p1.mostrar(tela)
