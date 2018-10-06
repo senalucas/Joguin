@@ -46,10 +46,10 @@ class N1():
             z.mostrar(tela)
             if(pygame.sprite.collide_rect(j,self.listaDeMacas[i])):
                 if self.listaDeMacas[i].vermelha == True:
-                    self.maca = objetos.Massan(self.macav,1000,1000,True,False)
+                    self.maca = objetos.Massan(self.macav,750,570,True,False)
                     self.listaDeMacas[i] = self.maca
                 elif self.listaDeMacas[i].dourada == True:
-                    self.maca = objetos.Massan(self.macad,1000,1000,False,True)
+                    self.maca = objetos.Massan(self.macad,750,570,False,True)
                     self.listaDeMacas[i] = self.maca
                 self.listaDeMacas[i].comeu = True
             i+=1
