@@ -19,11 +19,11 @@ class N1():
 
     def temporizador(self, start, x):
         seconds=(pygame.time.get_ticks()-start)/1000
-        
+
         if seconds > x:
-            return True
+            return seconds
         else:
-            print(seconds)
+            return seconds
 
     def criarmassan(self):
         #count = 1
@@ -87,6 +87,11 @@ class N1():
 
     def vitoria(self,tela):
         self.win.mostrarTextoNaTela(tela,100,260)
+
+    def derrota(self, tela):
+        self.gover = objetos.Textos("SEU TEMPO ACABOU!",60,255,255,255)
+        pygame.time.delay(2000)
+        self.gover.mostrarTextoNaTela(tela, 100, 260)
 
     def mostrarlvl(self,tela):
         self.p1.mostrar(tela)

@@ -46,13 +46,15 @@ def jogo():
     nivel1 = levels.level1.N1(largura,altura)
     titulo = objetos.Textos("Maçãs Forever 2.0",25,255,255,255)
     pontuacao = objetos.Textos("Pontuação: ",25,255,255,255)
+    tempo = objetos.Textos("Tempo: ", 20, 255, 255, 255)
 
     start = pygame.time.get_ticks()
 
     while True:
-        ja = nivel1.temporizador(start, 10)
+        time = nivel1.temporizador(start, 10)
 
-        if(ja == True):
+        if(int(time) == 10):
+            nivel1.derrota(tela)
             break
 
         for e in pygame.event.get():
@@ -63,9 +65,12 @@ def jogo():
         tela.blit(background,(0,0))
         titulo.mostrarTextoNaTela(tela,((largura/3)),10)
         pontuacao.mostrarTextoNaTela(tela,550,560)
+        tempo.mostrarTextoNaTela(tela, 655, 2)
 
         pontos = objetos.Textos(str(nivel1.get_pontuacao()),25,255,255,255)
         pontos.mostrarTextoNaTela(tela,700,560)
+        time = objetos.Textos(str(time), 20, 255, 255, 255)
+        time.mostrarTextoNaTela(tela, 730, 2)
 
         j.movimentacao(j,nivel1.p1,nivel1.p2,nivel1.p3,nivel1.p4)
         nivel1.mostrarlvl(tela)
