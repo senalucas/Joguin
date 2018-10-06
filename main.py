@@ -62,7 +62,9 @@ def jogo():
         nivel1.mostrarlvl(tela)
         j.mostrar(tela)
         nivel1.movimaca(j,tela)
-        nivel1.ganhou()
+        if nivel1.ganhou(j):
+            nivel1.vitoria(tela)
+
         pygame.display.update()
 
 menu()

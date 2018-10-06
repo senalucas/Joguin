@@ -1,4 +1,4 @@
-import pygame,os,objetos, random,char,definicoes
+import pygame,os,objetos,random,char,definicoes
 
 pygame.init()
 
@@ -70,10 +70,15 @@ class N1():
     def get_pontuacao(self):
         return self.pontuacao
 
-    def ganhou(self):
-        if self.get_pontuacao()>=20:
+    def ganhou(self,j):
+        if self.get_pontuacao()>=2:
             self.p = objetos.Coisas(self.img.porta2,400,55)
+            if pygame.sprite.collide_rect(j,self.p):
+                self.win = objetos.Textos("NÍVEL 1 CONCLUÍDO!",60,255,255,255)
+                return True
 
+    def vitoria(self,tela):
+        self.win.mostrarTextoNaTela(tela,100,260)
 
     def mostrarlvl(self,tela):
         self.p1.mostrar(tela)
