@@ -7,12 +7,12 @@ def menu():
     pygame.init()
 
     tela = pygame.display.set_mode([largura,altura])
-    images = definicoes.Diretorios()        
+    images = definicoes.Diretorios()
     pygame.display.set_caption("Maçãs Forever 2.0")
     background = pygame.image.load(images.fundoInicial)
     portao = objetos.Coisas(images.porta1,(largura/2)-15,altura-225)
     t = objetos.Textos("Maçãs Forever 2.0",42,255,255,255)
-    iniciar = objetos.Textos("Iniciar",30,255,255,255)  
+    iniciar = objetos.Textos("Iniciar",30,255,255,255)
     while True:
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
@@ -22,14 +22,14 @@ def menu():
                 for y in range(420,451):
                     if ((pygame.mouse.get_pos()[0] == x) and (pygame.mouse.get_pos()[1] == y)):
                         if pygame.mouse.get_pressed()[0]:
-                            jogo()                
-            
+                            jogo()
+
 
         tela.blit(background,(0,0))
         iniciar.mostrarTextoNaTela(tela,320,420)
         t.mostrarTextoNaTela(tela,((largura/4)),((altura)-altura*0.9))
         portao.mostrar(tela)
-        
+
         pygame.display.update()
 
 

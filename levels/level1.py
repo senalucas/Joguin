@@ -18,15 +18,15 @@ class N1():
         self.listaDeMacas = []
 
     def criarmassan(self):
-        count = 1
-        for i in range(0,10):
+        #count = 1
+        for i in range(0,1):
             j = random.randint (1, 10)
-            if (j <= 3 and count <= 3):
+            if (j <= 3):
                 x = random.randint(135,700)
                 y = random.randint(100,500)
                 self.maca = objetos.Massan(self.macad,x,y,False,True)
                 self.listaDeMacas.append(self.maca)
-                count+=1
+                #count+=1
             else:
                 x = random.randint(135,700)
                 y = random.randint(100,500)
@@ -46,10 +46,10 @@ class N1():
             z.mostrar(tela)
             if(pygame.sprite.collide_rect(j,self.listaDeMacas[i])):
                 if self.listaDeMacas[i].vermelha == True:
-                    self.maca = objetos.Massan(self.macav,770,570,True,False)
+                    self.maca = objetos.Massan(self.macav,750,570,True,False)
                     self.listaDeMacas[i] = self.maca
                 elif self.listaDeMacas[i].dourada == True:
-                    self.maca = objetos.Massan(self.macav,770,570,False,True)
+                    self.maca = objetos.Massan(self.macav,750,570,False,True)
                     self.listaDeMacas[i] = self.maca
                 self.listaDeMacas[i].comeu = True
             #break
