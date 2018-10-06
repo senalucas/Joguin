@@ -14,10 +14,12 @@ class N1():
         self.p2 = objetos.Coisas(self.img.ps2,66,300)
         self.p3 = objetos.Coisas(self.img.ps3,400,540)
         self.p4 = objetos.Coisas(self.img.ps4,734,300)
+        self.p = objetos.Coisas(self.img.porta1,largura/2,55)
 
         self.listaDeMacas = []
-        count = 1
 
+    def criarmassan(self):
+        count = 1
         for i in range(0,10):
             j = random.randint (1, 10)
             if (j <= 3 and count <= 3):
@@ -32,13 +34,6 @@ class N1():
                 self.maca = objetos.Massan(self.macav,x,y,True,False)
                 self.listaDeMacas.append(self.maca)
 
-
-        self.grupo = pygame.sprite.Group()
-        self.grupo.add(self.p1)
-        self.grupo.add(self.p2)
-        self.grupo.add(self.p3)
-        self.grupo.add(self.p4)
-        self.p = objetos.Coisas(self.img.porta1,largura/2,55)
 
     def get_maca(self):
         return self.listaDeMacas
@@ -60,12 +55,20 @@ class N1():
                 self.listaDeMacas[i].comeu = True
             #break
             i+=1
+
         for i in self.listaDeMacas:
             if i.comeu == True:
                 if i.vermelha == True:
                     self.pontuacao +=1
                 elif i.dourada == True:
                     self.pontuacao +=3
+        contador = 0
+        for i in self.listaDeMacas:
+            if i.comeu == True:
+                contador +=1
+        if contador == len(self.listaDeMacas):
+            self.criarmassan()
+
     def get_pontuacao(self):
         return self.pontuacao
 
