@@ -1,4 +1,4 @@
-import pygame,os,objetos,random,char,definicoes
+import pygame,os,objetos,random,char,definicoes,sys
 
 pygame.init()
 
@@ -16,6 +16,14 @@ class N1():
         self.p = objetos.Coisas(self.img.porta1,largura/2,55)
 
         self.listaDeMacas = []
+
+    def temporizador(self, start, x):
+        seconds=(pygame.time.get_ticks()-start)/1000
+        
+        if seconds > x:
+            return True
+        else:
+            print(seconds)
 
     def criarmassan(self):
         #count = 1
