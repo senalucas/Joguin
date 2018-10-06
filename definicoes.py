@@ -13,7 +13,6 @@ class Diretorios():
         self.fundo = "Images/Fundo/fundo.png"
         self.fundoInicial = "Images/Fundo/fundoTelaInicial.png"
         self.macav = "Images/Elementos/maca_vermelha.png"
-        self.macad = "Images/Elementos/maca_dourada.png"
-        self.ghostd = "Images/Elementos/ghost1.png"        
+        self.macad = "Images/Elementos/maca_dourada1.png"
+        self.ghostd = "Images/Elementos/ghost1.png"
         self.ghoste = "Images/Elementos/ghost2.png"
-      
