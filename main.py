@@ -1,4 +1,4 @@
-import pygame,sys,os,objetos,char,definicoes,levels.level1, time
+import pygame,sys,os,objetos,char,definicoes,levels.level1,levels.level2, time
 
 largura=800
 altura=600
@@ -43,7 +43,10 @@ def jogo():
     fundo = img.fundo
     background = pygame.image.load(fundo)
     j = char.Personagem(largura/2,altura/2)
+
     nivel1 = levels.level1.N1(largura,altura)
+    nivel2 = levels.level2.N2(largura,altura)
+
     titulo = objetos.Textos("Maçãs Forever 2.0",25,255,255,255)
     pontuacao = objetos.Textos("Pontuação: ",25,255,255,255)
     tempo = objetos.Textos("Tempo: ", 20, 255, 255, 255)
@@ -94,7 +97,41 @@ def jogo():
             aux = True
 
         if(time1 >= 12 and aux == True):
-            break
+            aux = False
+            time1 = nivel2.temporizador(start)
+
+            pontos = objetos.Textos(str(nivel2.get_pontuacao()),25,255,255,255)
+            pontos.mostrarTextoNaTela(tela,700,560)
+
+            if(aux == False):
+                time2 = objetos.Textos(str(time1), 20, 255, 255, 255)
+            else:
+                time2 = objetos.Textos("10.0", 20, 255, 255, 255)
+            time2.mostrarTextoNaTela(tela, 730, 2)
+
+            if(aux == False):
+                j.movimentacao(j,nivel2.p1,nivel2.p2,nivel2.p3,nivel2.p4)
+
+            tela.blit(background,(0,0))
+            titulo.mostrarTextoNaTela(tela,((largura/3)),10)
+            pontuacao.mostrarTextoNaTela(tela,550,560)
+            tempo.mostrarTextoNaTela(tela, 655, 2)
+            nivel2.mostrarlvl(tela)
+            j.mostrar(tela)
+            nivel2.movimaca(j,tela)
+
+            vin = False
+
+            if nivel2.ganhou(j):
+                nivel2.vitoria(tela)
+                aux = True
+                vin = True
+
+            perdeu = objetos.Textos("TEMPO ESGOTADO!", 60, 255, 255, 255)
+
+            if(time1 > 10 and vin == False):
+                perdeu.mostrarTextoNaTela(tela, 100, 260)
+                aux = True
 
         pygame.display.update()
 
