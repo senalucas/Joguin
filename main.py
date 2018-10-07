@@ -28,14 +28,13 @@ def menu():
         tela.blit(background,(0,0))
         iniciar.mostrarTextoNaTela(tela,320,420)
         t.mostrarTextoNaTela(tela,((largura/4)),((altura)-altura*0.9))
-        portao.mostrar(tela)
+        #portao.mostrar(tela)
 
         pygame.display.update()
 
 
 def jogo():
     pygame.init()
-
 
     tela = pygame.display.set_mode([largura,altura])
     pygame.display.set_caption("Maçãs Forever 2.0")
@@ -45,15 +44,15 @@ def jogo():
     j = char.Personagem(largura/2,altura/2)
 
     nivel1 = levels.level1.N1(largura,altura)
-    nivel2 = levels.level2.N2(largura,altura)
 
     titulo = objetos.Textos("Maçãs Forever 2.0",25,255,255,255)
     pontuacao = objetos.Textos("Pontuação: ",25,255,255,255)
     tempo = objetos.Textos("Tempo: ", 20, 255, 255, 255)
 
-    start = pygame.time.get_ticks()
+
     aux = False
 
+    start = pygame.time.get_ticks()
     while True:
         time1 = nivel1.temporizador(start)
 
@@ -96,8 +95,17 @@ def jogo():
             perdeu.mostrarTextoNaTela(tela, 100, 260)
             aux = True
 
-        if(time1 >= 12 and aux == True):
+        if(time1 >= 12 and aux == True and vin == False):
             aux = False
+            break
+
+
+        # Aqui começa o 2 nível7
+        if(time1 >= 12 and aux == True and vin == True):
+            print("começou aqui meu brotha")
+            start = pygame.time.get_ticks()
+            aux = False
+            nivel2 = levels.level2.N2(largura,altura)
             time1 = nivel2.temporizador(start)
 
             pontos = objetos.Textos(str(nivel2.get_pontuacao()),25,255,255,255)
@@ -119,7 +127,7 @@ def jogo():
             nivel2.mostrarlvl(tela)
             j.mostrar(tela)
             nivel2.movimaca(j,tela)
-
+            print("PASSOU AQUI OH MEU PARÇA")
             vin = False
 
             if nivel2.ganhou(j):
@@ -127,11 +135,22 @@ def jogo():
                 aux = True
                 vin = True
 
+
             perdeu = objetos.Textos("TEMPO ESGOTADO!", 60, 255, 255, 255)
 
             if(time1 > 10 and vin == False):
                 perdeu.mostrarTextoNaTela(tela, 100, 260)
                 aux = True
+
+            if(time1 > 12 and aux == True and vin == False):
+                break
+
+            print(aux)
+            print(vin)
+
+            if(time1 > 12 and aux == True and vin == True):
+                aux = False
+                break
 
         pygame.display.update()
 

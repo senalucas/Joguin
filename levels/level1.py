@@ -17,9 +17,8 @@ class N1():
 
         self.listaDeMacas = []
 
-    def temporizador(self, start):
+    def temporizador(self, start):        
         seconds=(pygame.time.get_ticks()-start)/1000
-
         return seconds
 
     def criarmassan(self):

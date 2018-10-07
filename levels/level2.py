@@ -79,7 +79,7 @@ class N2():
         if self.get_pontuacao()>=2:
             self.p = objetos.Coisas(self.img.porta2,400,55)
             if pygame.sprite.collide_rect(j,self.p):
-                self.win = objetos.Textos("NÍVEL 1 CONCLUÍDO!",60,255,255,255)
+                self.win = objetos.Textos("NÍVEL 2 CONCLUÍDO!",60,255,255,255)
                 return True
 
     def vitoria(self,tela):
@@ -90,4 +90,4 @@ class N2():
         self.p2.mostrar(tela)
         self.p3.mostrar(tela)
         self.p4.mostrar(tela)
-        #self.p.mostrar(tela)
+        self.p.mostrar(tela)
