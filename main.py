@@ -1,4 +1,4 @@
-import pygame,sys,os,objetos,char,definicoes,levels.level1
+import pygame,sys,os,objetos,char,definicoes,levels.level1, time
 
 largura=800
 altura=600
@@ -49,13 +49,10 @@ def jogo():
     tempo = objetos.Textos("Tempo: ", 20, 255, 255, 255)
 
     start = pygame.time.get_ticks()
+    aux = False
 
     while True:
-        time = nivel1.temporizador(start, 10)
-
-        if(int(time) == 10):
-            nivel1.derrota(tela)
-            break
+        time1 = nivel1.temporizador(start)
 
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
@@ -69,15 +66,35 @@ def jogo():
 
         pontos = objetos.Textos(str(nivel1.get_pontuacao()),25,255,255,255)
         pontos.mostrarTextoNaTela(tela,700,560)
-        time = objetos.Textos(str(time), 20, 255, 255, 255)
-        time.mostrarTextoNaTela(tela, 730, 2)
 
-        j.movimentacao(j,nivel1.p1,nivel1.p2,nivel1.p3,nivel1.p4)
+        if(aux == False):
+            time2 = objetos.Textos(str(time1), 20, 255, 255, 255)
+        else:
+            time2 = objetos.Textos("10.0", 20, 255, 255, 255)
+        time2.mostrarTextoNaTela(tela, 730, 2)
+
+        if(aux == False):
+            j.movimentacao(j,nivel1.p1,nivel1.p2,nivel1.p3,nivel1.p4)
+
         nivel1.mostrarlvl(tela)
         j.mostrar(tela)
         nivel1.movimaca(j,tela)
+
+        vin = False
+
         if nivel1.ganhou(j):
             nivel1.vitoria(tela)
+            aux = True
+            vin = True
+
+        perdeu = objetos.Textos("TEMPO ESGOTADO!", 60, 255, 255, 255)
+
+        if(time1 > 10 and vin == False):
+            perdeu.mostrarTextoNaTela(tela, 100, 260)
+            aux = True
+
+        if(time1 >= 12 and aux == True):
+            break
 
         pygame.display.update()
 
