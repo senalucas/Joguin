@@ -1,4 +1,4 @@
-import pygame,os,levels.level1,objetos
+import pygame,os,levels.level1,objetos,random
 
 pygame.init()
 
@@ -54,3 +54,58 @@ class Personagem(pygame.sprite.Sprite):
                 else:
                     self.Char = pygame.image.load("Images/Personagem/bonecopradireita2.png")
                 self.rect = self.rect.move(+(self.andando),0)
+
+class Fantasma(pygame.sprite.Sprite):
+    def __init__(self,x,y,tipo):
+        pygame.sprite.Sprite.__init__(self)
+        self.Fantasma = pygame.image.load("Images/Elementos/ghost1.png").convert_alpha()
+        self.rect = self.Fantasma.get_rect()
+        self.rect.centerx = x
+        self.rect.centery = y
+        self.tipo = tipo
+        self.andando = 3
+        self.p = False
+    def mostrar(self,tela):
+        tela.blit(self.Fantasma,self.rect)
+
+    def movimentar(self,p1,p2,p3,p4,j):
+        perdeu = objetos.Textos("Morreu",25,255,255,255)
+        if self.tipo <= 10:
+            if not pygame.sprite.collide_rect(self,p3):
+                self.rect = self.rect.move(0,self.andando)
+                if pygame.sprite.collide_rect(self,p3):
+                    x =  random.randint(135,700)
+                    y = random.randint(100,500)     
+                    self.rect.centerx = x
+                    self.rect.centery = y
+        if self.tipo > 10 and self.tipo <= 20:
+            if not pygame.sprite.collide_rect(self,p4):
+                self.rect = self.rect.move(self.andando,0)
+                if pygame.sprite.collide_rect(self,p4):
+                    x = random.randint(135,700)
+                    y = random.randint(100,500)
+                    self.rect.centerx = x
+                    self.rect.centery = y
+        if self.tipo > 20 and self.tipo <= 30:
+            if not pygame.sprite.collide_rect(self,p1):
+                self.rect = self.rect.move(0,-self.andando)
+                if pygame.sprite.collide_rect(self,p1):
+                    x = random.randint(135,700)
+                    y = random.randint(100,500)
+                    self.rect.centerx = x
+                    self.rect.centery = y
+        if self.tipo > 30:
+            if not pygame.sprite.collide_rect(self,p2):
+                self.rect = self.rect.move(-self.andando,0)
+                if pygame.sprite.collide_rect(self,p2):
+                    x = random.randint(135,700)
+                    y = random.randint(100,500)
+                    self.rect.centerx = x
+                    self.rect.centery = y
+
+        if pygame.sprite.collide_rect(self,j):
+            self.move
+            self.p = True
+
+    def pegouFantasma(self):
+        return self.p

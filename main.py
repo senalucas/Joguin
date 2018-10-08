@@ -41,7 +41,7 @@ def jogo():
     img = definicoes.Diretorios()
     fundo = img.fundo
     background = pygame.image.load(fundo)
-    j = char.Personagem(largura/2,altura/2)
+    j = char.Personagem(largura/2,450)
 
     nivel1 = levels.level1.N1(largura,altura)
 
@@ -49,13 +49,13 @@ def jogo():
     pontuacao = objetos.Textos("Pontuação: ",25,255,255,255)
     tempo = objetos.Textos("Tempo: ", 20, 255, 255, 255)
 
-
+    ff = False
     aux = False
-
+    start2 = pygame.time.get_ticks()
     start = pygame.time.get_ticks()
     while True:
         time1 = nivel1.temporizador(start)
-
+        time4 = nivel1.temporizador(start)
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
                 pygame.quit()
@@ -72,17 +72,27 @@ def jogo():
         if(aux == False):
             time2 = objetos.Textos(str(time1), 20, 255, 255, 255)
         else:
-            time2 = objetos.Textos("10.0", 20, 255, 255, 255)
+            time2 = objetos.Textos("20.0", 20, 255, 255, 255)
         time2.mostrarTextoNaTela(tela, 730, 2)
 
-        if(aux == False):
+        if(aux == False) and ff == False:
             j.movimentacao(j,nivel1.p1,nivel1.p2,nivel1.p3,nivel1.p4)
 
         nivel1.mostrarlvl(tela)
+        nivel1.mostrarFantasma(tela,j)
         j.mostrar(tela)
         nivel1.movimaca(j,tela)
-
         vin = False
+
+        perdeu = objetos.Textos("PERDEU",60,255,255,255)
+        
+        if nivel1.pegouFantasma2():
+            perdeu.mostrarTextoNaTela(tela,(largura/3),altura/2)
+            ff = True
+
+        if time4 >= 5 and ff == True:
+            ff = False
+            break
 
         if nivel1.ganhou(j):
             nivel1.vitoria(tela)
@@ -91,78 +101,78 @@ def jogo():
 
         perdeu = objetos.Textos("TEMPO ESGOTADO!", 60, 255, 255, 255)
 
-        if(time1 > 10 and vin == False):
+        if(time1 > 20 and vin == False):
             perdeu.mostrarTextoNaTela(tela, 100, 260)
             aux = True
 
-        if(time1 >= 12 and aux == True and vin == False):
+        if(time1 >= 22 and aux == True and vin == False):
             aux = False
             break
 
 
-        # Aqui começa o 2 nível7
-        if(time1 >= 12 and aux == True and vin == True):
-            nivel1 = 0
-            aux = False
+        # # Aqui começa o 2 nível7
+        # if(time1 >= 12 and aux == True and vin == True):
+        #     nivel1 = 0
+        #     aux = False
 
-            while True:
-                print("começou aqui meu brotha")
-                start1 = pygame.time.get_ticks()
+        #     while True:
+        #         print("começou aqui meu brotha")
+        #         start1 = pygame.time.get_ticks()
 
-                nivel2 = levels.level2.N2(largura,altura)
-                time1 = nivel2.temporizador(start1)
+        #         nivel2 = levels.level2.N2(largura,altura)
+        #         time1 = nivel2.temporizador(start1)
 
-                pontos = objetos.Textos(str(nivel2.get_pontuacao()),25,255,255,255)
-                pontos.mostrarTextoNaTela(tela,700,560)
+        #         pontos = objetos.Textos(str(nivel2.get_pontuacao()),25,255,255,255)
+        #         pontos.mostrarTextoNaTela(tela,700,560)
 
-                if(aux == False):
-                    time2 = objetos.Textos(str(time1), 20, 255, 255, 255)
-                else:
-                    time2 = objetos.Textos("10.0", 20, 255, 255, 255)
-                time2.mostrarTextoNaTela(tela, 730, 2)
+        #         if(aux == False):
+        #             time2 = objetos.Textos(str(time1), 20, 255, 255, 255)
+        #         else:
+        #             time2 = objetos.Textos("10.0", 20, 255, 255, 255)
+        #         time2.mostrarTextoNaTela(tela, 730, 2)
 
-                if(aux == True):
-                    j.movimentacao(j,nivel2.p1,nivel2.p2,nivel2.p3,nivel2.p4)
+        #         if(aux == True):
+        #             j.movimentacao(j,nivel2.p1,nivel2.p2,nivel2.p3,nivel2.p4)
 
-                tela.blit(background,(0,0))
-                titulo.mostrarTextoNaTela(tela,((largura/3)),10)
-                pontuacao.mostrarTextoNaTela(tela,550,560)
-                tempo.mostrarTextoNaTela(tela, 655, 2)
-                nivel2.mostrarlvl(tela)
-                j.mostrar(tela)
-                nivel2.movimaca(j,tela)
-                print("PASSOU AQUI OH MEU PARÇA")
-                vin = False
+        #         tela.blit(background,(0,0))
+        #         titulo.mostrarTextoNaTela(tela,((largura/3)),10)
+        #         pontuacao.mostrarTextoNaTela(tela,550,560)
+        #         tempo.mostrarTextoNaTela(tela, 655, 2)
+        #         nivel2.mostrarlvl(tela)
+        #         j.mostrar(tela)
+        #         nivel2.movimaca(j,tela)
+        #         print("PASSOU AQUI OH MEU PARÇA")
+        #         vin = False
 
-                if nivel2.ganhou(j):
-                    nivel2.vitoria(tela)
-                    aux = True
-                    vin = True
+        #         if nivel2.ganhou(j):
+        #             nivel2.vitoria(tela)
+        #             aux = True
+        #             vin = True
 
 
-                perdeu = objetos.Textos("TEMPO ESGOTADO!", 60, 255, 255, 255)
-                loser = False
-                if(time1 > 10 and vin == False):
-                    perdeu.mostrarTextoNaTela(tela, 100, 260)
-                    aux = True
-                    loser = True
+        #         perdeu = objetos.Textos("TEMPO ESGOTADO!", 60, 255, 255, 255)
+        #         loser = False
+        #         if(time1 > 10 and vin == False):
+        #             perdeu.mostrarTextoNaTela(tela, 100, 260)
+        #             aux = True
+        #             loser = True
 
-                if(time1 > 12 and aux == True and vin == False):
-                    aux = True
-                    break
+        #         if(time1 > 12 and aux == True and vin == False):
+        #             aux = True
+        #             break
 
-                print(aux)
-                print(vin)
+        #         print(aux)
+        #         print(vin)
 
-                if(time1 > 12 and aux == True and vin == True):
-                    aux = False
-                    break
+        #         if(time1 > 12 and aux == True and vin == True):
+        #             aux = False
+        #             break
 
-                pygame.display.update()
+        #         pygame.display.update()
 
-            #while termina AQUI
-            if (aux == True):
-                break
+        #     #while termina AQUI
+        #     if (aux == True):
+        #         break
 
         pygame.display.update()
 

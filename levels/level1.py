@@ -1,4 +1,4 @@
-import pygame,os,objetos,random,char,definicoes,sys
+import pygame,os,objetos,random,char,definicoes,sys,char
 
 pygame.init()
 
@@ -16,6 +16,13 @@ class N1():
         self.p = objetos.Coisas(self.img.porta1,largura/2,55)
 
         self.listaDeMacas = []
+        self.listaFantasma = []
+        for i in range(0,4):
+            tipo = random.randint(0,40)
+            x = random.randint(135,700)
+            y = random.randint(100,500)
+            self.f = char.Fantasma(x,y,tipo)
+            self.listaFantasma.append(self.f)
 
     def temporizador(self, start):        
         seconds=(pygame.time.get_ticks()-start)/1000
@@ -83,6 +90,22 @@ class N1():
 
     def vitoria(self,tela):
         self.win.mostrarTextoNaTela(tela,100,260)
+
+
+    def mostrarFantasma(self,tela,j):
+        x = len(self.listaFantasma)
+        i = 0
+        while i < x:
+            f = self.listaFantasma[i]
+            f.mostrar(tela)
+            f.movimentar(self.p1,self.p2,self.p3,self.p4,j)
+            i += 1
+    def pegouFantasma2(self):
+        x = len(self.listaFantasma)
+        i = 0
+        while i < x:
+            f = self.listaFantasma[i]
+            return f.pegouFantasma()
 
     def mostrarlvl(self,tela):
         self.p1.mostrar(tela)
