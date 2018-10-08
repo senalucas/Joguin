@@ -24,7 +24,7 @@ class N1():
             self.f = char.Fantasma(x,y,tipo)
             self.listaFantasma.append(self.f)
 
-    def temporizador(self, start):        
+    def temporizador(self, start):
         seconds=(pygame.time.get_ticks()-start)/1000
         return seconds
 
@@ -106,6 +106,7 @@ class N1():
         while i < x:
             f = self.listaFantasma[i]
             return f.pegouFantasma()
+            i +=1
 
     def mostrarlvl(self,tela):
         self.p1.mostrar(tela)

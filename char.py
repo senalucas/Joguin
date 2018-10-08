@@ -1,4 +1,4 @@
-import pygame,os,levels.level1,objetos,random
+import pygame,os,levels.level1,objetos,random,definicoes
 
 pygame.init()
 
@@ -57,8 +57,10 @@ class Personagem(pygame.sprite.Sprite):
 
 class Fantasma(pygame.sprite.Sprite):
     def __init__(self,x,y,tipo):
+        self.dir = definicoes.Diretorios()
         pygame.sprite.Sprite.__init__(self)
-        self.Fantasma = pygame.image.load("Images/Elementos/ghost1.png").convert_alpha()
+        self.Fantasma = pygame.image.load(self.dir.ghostd).convert_alpha()
+        
         self.rect = self.Fantasma.get_rect()
         self.rect.centerx = x
         self.rect.centery = y
@@ -103,7 +105,7 @@ class Fantasma(pygame.sprite.Sprite):
                     self.rect.centerx = x
                     self.rect.centery = y
 
-        if pygame.sprite.collide_rect(self,j):            
+        if pygame.sprite.collide_rect(self,j):
             self.p = True
 
     def pegouFantasma(self):
