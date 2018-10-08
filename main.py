@@ -98,7 +98,7 @@ def jogo():
         if ff == True:
             perdeu.mostrarTextoNaTela(tela,(largura/3),altura/2)
 
-        if (time1-time4) >= 2 and ff == True:
+        if (time1-time4) > 2 and ff == True:
             ff = False
             break
 
@@ -114,6 +114,10 @@ def jogo():
             aux = True
 
         if(time1 >= 22 and aux == True and vin == False):
+            aux = False
+            break
+
+        if(time1 >= 22 and aux == True and vin == True):
             aux = False
             break
 
