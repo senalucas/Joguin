@@ -17,12 +17,10 @@ class N1():
 
         self.listaDeMacas = []
         self.listaFantasma = []
-
         for i in range(0,4):
             tipo = random.randint(0,40)
             x = random.randint(135,700)
             y = random.randint(100,500)
-            bateu = False
             self.f = char.Fantasma(x,y,tipo)
             self.listaFantasma.append(self.f)
 
@@ -46,6 +44,9 @@ class N1():
                 self.maca = objetos.Massan(self.macav,x,y,True,False)
                 self.listaDeMacas.append(self.maca)
 
+
+    def get_maca(self):
+        return self.listaDeMacas
 
     def movimaca(self,j,tela):
         x = len(self.listaDeMacas)
@@ -81,7 +82,7 @@ class N1():
         return self.pontuacao
 
     def ganhou(self,j):
-        if self.get_pontuacao()>=30:
+        if self.get_pontuacao()>=2:
             self.p = objetos.Coisas(self.img.porta2,400,55)
             if pygame.sprite.collide_rect(j,self.p):
                 self.win = objetos.Textos("NÍVEL 1 CONCLUÍDO!",60,255,255,255)
@@ -100,14 +101,11 @@ class N1():
             f.movimentar(self.p1,self.p2,self.p3,self.p4,j)
             i += 1
     def pegouFantasma2(self):
-        flag = 0
-        for i in range(0,len(self.listaFantasma)):
-            if self.listaFantasma[i].pegouFantasma() == True:
-                flag = 1
-        if flag == 1:
-            for i in range(0,len(self.listaFantasma)):
-                self.listaFantasma[i].mudarp(True)
-            return True
+        x = len(self.listaFantasma)
+        i = 0
+        while i < x:
+            f = self.listaFantasma[i]
+            return f.pegouFantasma()
 
     def mostrarlvl(self,tela):
         self.p1.mostrar(tela)

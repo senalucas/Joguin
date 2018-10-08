@@ -51,13 +51,11 @@ def jogo():
 
     ff = False
     aux = False
-    start = pygame.time.get_ticks()
-    time4 = 0
     start2 = pygame.time.get_ticks()
-    catch = False
-
+    start = pygame.time.get_ticks()
     while True:
         time1 = nivel1.temporizador(start)
+        time4 = nivel1.temporizador(start)
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
                 pygame.quit()
@@ -74,7 +72,7 @@ def jogo():
         if(aux == False):
             time2 = objetos.Textos(str(time1), 20, 255, 255, 255)
         else:
-            time2 = objetos.Textos("60.0", 20, 255, 255, 255)
+            time2 = objetos.Textos("20.0", 20, 255, 255, 255)
         time2.mostrarTextoNaTela(tela, 730, 2)
 
         if(aux == False) and ff == False:
@@ -88,17 +86,11 @@ def jogo():
 
         perdeu = objetos.Textos("PERDEU",60,255,255,255)
 
-        if nivel1.pegouFantasma2() and catch == False:
+        if nivel1.pegouFantasma2():
             perdeu.mostrarTextoNaTela(tela,(largura/3),altura/2)
-            time4 = pygame.time.get_ticks()/1000
             ff = True
-            catch = True
-            aux = True
 
-        if ff == True:
-            perdeu.mostrarTextoNaTela(tela,(largura/3),altura/2)
-
-        if (time1-time4) > 2 and ff == True:
+        if time4 >= 5 and ff == True:
             ff = False
             break
 
@@ -109,15 +101,11 @@ def jogo():
 
         perdeu = objetos.Textos("TEMPO ESGOTADO!", 60, 255, 255, 255)
 
-        if(time1 > 60 and vin == False):
+        if(time1 > 20 and vin == False):
             perdeu.mostrarTextoNaTela(tela, 100, 260)
             aux = True
 
-        if(time1 >= 61 and aux == True and vin == False):
-            aux = False
-            break
-
-        if(time1 >= 62 and aux == True and vin == True):
+        if(time1 >= 22 and aux == True and vin == False):
             aux = False
             break
 
