@@ -113,7 +113,7 @@ def jogo():
             perdeu.mostrarTextoNaTela(tela, 100, 260)
             aux = True
 
-        if(time1 >= 22 and aux == True and vin == False):
+        if(time1 >= 21 and aux == True and vin == False):
             aux = False
             break
 
