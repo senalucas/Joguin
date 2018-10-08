@@ -18,7 +18,7 @@ class N1():
         self.listaDeMacas = []
         self.listaFantasma = []
 
-        for i in range(0,4):
+        for i in range(0, 4):
             tipo = random.randint(0,40)
             x = random.randint(135,700)
             y = random.randint(100,500)
@@ -81,7 +81,7 @@ class N1():
         return self.pontuacao
 
     def ganhou(self,j):
-        if self.get_pontuacao()>=30:
+        if self.get_pontuacao()>=10:
             self.p = objetos.Coisas(self.img.porta2,400,55)
             if pygame.sprite.collide_rect(j,self.p):
                 self.win = objetos.Textos("NÍVEL 1 CONCLUÍDO!",60,255,255,255)

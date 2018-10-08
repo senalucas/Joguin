@@ -65,8 +65,9 @@ class Fantasma(pygame.sprite.Sprite):
         self.rect.centerx = x
         self.rect.centery = y
         self.tipo = tipo
-        self.andando = 3
+        self.andando = 2
         self.p = False
+
     def mostrar(self,tela):
         tela.blit(self.Fantasma,self.rect)
 
