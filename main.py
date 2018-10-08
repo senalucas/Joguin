@@ -51,11 +51,13 @@ def jogo():
 
     ff = False
     aux = False
-    start2 = pygame.time.get_ticks()
     start = pygame.time.get_ticks()
+    time4 = 0
+    start2 = pygame.time.get_ticks()
+    catch = False
+
     while True:
         time1 = nivel1.temporizador(start)
-        time4 = nivel1.temporizador(start)
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
                 pygame.quit()
@@ -85,12 +87,18 @@ def jogo():
         vin = False
 
         perdeu = objetos.Textos("PERDEU",60,255,255,255)
-        
-        if nivel1.pegouFantasma2():
-            perdeu.mostrarTextoNaTela(tela,(largura/3),altura/2)
-            ff = True
 
-        if time4 >= 5 and ff == True:
+        if nivel1.pegouFantasma2() and catch == False:
+            perdeu.mostrarTextoNaTela(tela,(largura/3),altura/2)
+            time4 = pygame.time.get_ticks()/1000
+            ff = True
+            catch = True
+            aux = True
+
+        if ff == True:
+            perdeu.mostrarTextoNaTela(tela,(largura/3),altura/2)
+
+        if (time1-time4) >= 2 and ff == True:
             ff = False
             break
 

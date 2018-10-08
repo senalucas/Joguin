@@ -75,7 +75,7 @@ class Fantasma(pygame.sprite.Sprite):
                 self.rect = self.rect.move(0,self.andando)
                 if pygame.sprite.collide_rect(self,p3):
                     x =  random.randint(135,700)
-                    y = random.randint(100,500)     
+                    y = random.randint(100,500)
                     self.rect.centerx = x
                     self.rect.centery = y
         if self.tipo > 10 and self.tipo <= 20:
@@ -103,8 +103,7 @@ class Fantasma(pygame.sprite.Sprite):
                     self.rect.centerx = x
                     self.rect.centery = y
 
-        if pygame.sprite.collide_rect(self,j):
-            self.move
+        if pygame.sprite.collide_rect(self,j):            
             self.p = True
 
     def pegouFantasma(self):
